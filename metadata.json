@@ -1,0 +1,6 @@
+{
+  "name": "Saber+ | Competências Práticas para Jovens",
+  "description": "Plataforma moçambicana de aprendizagem de competências práticas com cursos em tecnologia, produtividade e beleza, aulas organizadas e acompanhamento real de progresso.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
