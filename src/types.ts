@@ -51,7 +51,7 @@ export interface Course {
   id: string;
   slug: string;
   title: string;
-  category: 'Tecnologia e produtividade' | 'Beleza' | 'Gestão e Negócios';
+  category: 'Tecnologia e produtividade' | 'Beleza' | 'Gestão e Negócios' | 'Idiomas';
   level: 'Iniciante' | 'Intermédio' | 'Avançado';
   price: number; // in Mozambican Meticais (MZN). 0 = Gratuito
   shortDescription: string;

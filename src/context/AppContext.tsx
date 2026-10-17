@@ -45,17 +45,28 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  USERS: 'saberplus_users_v1',
-  CURRENT_USER: 'saberplus_current_user_v1',
-  COURSES: 'saberplus_courses_v1',
-  ENROLLMENTS: 'saberplus_enrollments_v1',
-  CERTIFICATES: 'saberplus_certificates_v1',
-  NOTES: 'saberplus_notes_v1',
-  BOOKMARKS: 'saberplus_bookmarks_v1',
+  USERS: 'saberplus_users_v2',
+  CURRENT_USER: 'saberplus_current_user_v2',
+  COURSES: 'saberplus_courses_v2',
+  ENROLLMENTS: 'saberplus_enrollments_v2',
+  CERTIFICATES: 'saberplus_certificates_v2',
+  NOTES: 'saberplus_notes_v2',
+  BOOKMARKS: 'saberplus_bookmarks_v2',
 };
 
+// Clean legacy localStorage keys to ensure complete privacy
+if (typeof window !== 'undefined') {
+  try {
+    localStorage.removeItem('saberplus_users_v1');
+    localStorage.removeItem('saberplus_current_user_v1');
+    localStorage.removeItem('saberplus_enrollments_v1');
+  } catch {
+    // ignore
+  }
+}
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // 1. Users list
+  // 1. Users list (starts clean; new users save their own accounts here)
   const [users, setUsers] = useState<User[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.USERS);
@@ -65,51 +76,28 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   });
 
-  // 2. Current User (defaults to student Edgar Iniesta so dashboard loads directly)
+  // 2. Current User (starts completely clean with NO pre-authenticated user)
   const [currentUser, setCurrentUser] = useState<User | null>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed) return parsed;
+        if (parsed && parsed.email) return parsed;
       }
-      return INITIAL_USERS[0];
+      return null;
     } catch {
-      return INITIAL_USERS[0];
+      return null;
     }
   });
 
   // 3. Courses (always aligned with INITIAL_COURSES)
   const [courses, setCourses] = useState<Course[]>(INITIAL_COURSES);
 
-  // 4. Enrollments (with realistic initial progress for student Edgar Iniesta)
+  // 4. Enrollments (starts clean; each user enrolls in their chosen courses)
   const [enrollments, setEnrollments] = useState<Enrollment[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.ENROLLMENTS);
-      if (saved) return JSON.parse(saved);
-      // Seed initial enrollment for demonstration
-      return [
-        {
-          id: 'enr-1',
-          userId: 'user-student-demo',
-          courseId: 'course-excel-zero',
-          enrolledAt: '2026-03-05',
-          lastAccessedLessonId: 'les-exc-4',
-          completedLessonIds: ['les-exc-1', 'les-exc-2', 'les-exc-3'],
-          quizAttempts: [],
-          isCompleted: false
-        },
-        {
-          id: 'enr-2',
-          userId: 'user-student-demo',
-          courseId: 'course-capcut-pc',
-          enrolledAt: '2026-03-10',
-          lastAccessedLessonId: 'les-cpc-1',
-          completedLessonIds: ['les-cpc-1'],
-          quizAttempts: [],
-          isCompleted: false
-        }
-      ];
+      return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
     }
@@ -203,10 +191,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const loginWithGoogle = (email?: string, name?: string) => {
-    const targetEmail = (email || 'iniestaedgar20@gmail.com').trim().toLowerCase();
+    if (!email || !email.trim()) {
+      return { success: false, error: 'Por favor introduz o teu e-mail Google.' };
+    }
+    const targetEmail = email.trim().toLowerCase();
     let user = users.find(u => u.email.toLowerCase() === targetEmail);
     if (!user) {
-      const defaultName = name || (targetEmail.includes('@') ? targetEmail.split('@')[0] : 'Edgar Iniesta');
+      const defaultName = name?.trim() || (targetEmail.includes('@') ? targetEmail.split('@')[0] : 'Estudante');
       const formattedName = defaultName.charAt(0).toUpperCase() + defaultName.slice(1);
       user = {
         id: `user-google-${Date.now()}`,

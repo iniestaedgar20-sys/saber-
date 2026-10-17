@@ -59,7 +59,9 @@ export const CoursesCatalogPage: React.FC<CoursesCatalogPageProps> = ({ onNaviga
 
   const categories = [
     { id: 'all', label: 'Todas as Categorias' },
+    { id: 'Idiomas', label: 'Idiomas e Comunicação' },
     { id: 'Tecnologia e produtividade', label: 'Tecnologia e Produtividade' },
+    { id: 'Gestão e Negócios', label: 'Gestão e Negócios' },
     { id: 'Beleza', label: 'Beleza e Estética' }
   ];
 

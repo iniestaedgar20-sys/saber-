@@ -1514,32 +1514,555 @@ export const INITIAL_COURSES: Course[] = [
         explanation: 'Biossegurança visível, pontualidade, simpatia e qualidade no acabamento são os maiores pilares de fidelização de clientes.'
       }
     ]
+  },
+  {
+    id: 'course-marketing-digital',
+    slug: 'marketing-digital',
+    title: 'Curso de Marketing Digital',
+    category: 'Tecnologia e produtividade',
+    level: 'Iniciante',
+    price: 0,
+    thumbnail: '/src/assets/images/course_marketing_digital_1792264350994.jpg',
+    durationEstimate: '3 horas de aulas práticas',
+    shortDescription: 'Aprende os processos essenciais do marketing digital, estratégias de conteúdo, canais de mídia, performance e métricas para alavancar marcas e vendas.',
+    fullDescription: 'O Curso de Marketing Digital foi concebido de forma prática e objectiva para quem quer aprender a posicionar marcas, criar conteúdos estratégicos, entender canais de mídia e vender na internet. Ao longo de 13 aulas organizadas, vais aprender desde a introdução ao marketing digital, processos essenciais e vantagens do ambiente online, até planeamento de conteúdo, marketing de performance, análise de relatórios e por onde começar no mercado profissional.',
+    objectives: [
+      'Compreender o ecossistema e os conceitos fundamentais do marketing digital',
+      'Dominar os processos essenciais de captação, engajamento e conversão',
+      'Elaborar um planeamento estratégico focado em marketing de conteúdo',
+      'Entender os formatos de mídia e as estratégias de marketing de performance',
+      'Analisar relatórios de resultados, métricas de tráfego e retorno',
+      'Identificar as principais profissões e os primeiros passos práticos no mercado'
+    ],
+    requirements: [
+      'Acesso a um computador ou smartphone com ligação à internet',
+      'Interesse em redes sociais, comunicação e estratégias de crescimento digital',
+      'Nenhum conhecimento técnico prévio obrigatório'
+    ],
+    targetAudience: 'Empreendedores, estudantes, criadores de conteúdo, profissionais liberais e jovens que queiram conquistar novas oportunidades no mercado de marketing digital em Moçambique.',
+    isPublished: true,
+    featured: true,
+    passingScorePercent: 80,
+    modules: [
+      {
+        id: 'mod-mkt-1',
+        courseId: 'course-marketing-digital',
+        title: 'Módulo 1: Fundamentos e Processos do Marketing Digital',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-mkt-1',
+            moduleId: 'mod-mkt-1',
+            title: '01. O que é Marketing Digital?',
+            description: 'Aula 1',
+            videoId: 'emtfheMpOkU',
+            durationMinutes: 14,
+            order: 1,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-2',
+            moduleId: 'mod-mkt-1',
+            title: '02. História e Evolução',
+            description: 'Aula 2',
+            videoId: 'DFUAdPd4T5Y',
+            durationMinutes: 12,
+            order: 2,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-3',
+            moduleId: 'mod-mkt-1',
+            title: '03. Processos Essenciais do Marketing Digital',
+            description: 'Aula 3',
+            videoId: 'iS6zXtQMdVo',
+            durationMinutes: 15,
+            order: 3,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-4',
+            moduleId: 'mod-mkt-1',
+            title: '04. Vantagens do Digital',
+            description: 'Aula 4',
+            videoId: 'LWdNYIJ8xuk',
+            durationMinutes: 11,
+            order: 4,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-5',
+            moduleId: 'mod-mkt-1',
+            title: '05. Conceitos de Marketeiro e Fundamentos',
+            description: 'Aula 5',
+            videoId: 'nqER-CUXSRk',
+            durationMinutes: 13,
+            order: 5,
+            isRequired: true
+          }
+        ]
+      },
+      {
+        id: 'mod-mkt-2',
+        courseId: 'course-marketing-digital',
+        title: 'Módulo 2: Conteúdo, Performance e Canais de Mídia',
+        order: 2,
+        lessons: [
+          {
+            id: 'les-mkt-6',
+            moduleId: 'mod-mkt-2',
+            title: '06. Marketing de Conteúdo e Planejamento Estratégico',
+            description: 'Aula 6',
+            videoId: 'dmMzkbxXI2M',
+            durationMinutes: 18,
+            order: 6,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-7',
+            moduleId: 'mod-mkt-2',
+            title: '07. Marketing de Performance',
+            description: 'Aula 7',
+            videoId: 'YixNTerNKIQ',
+            durationMinutes: 16,
+            order: 7,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-8',
+            moduleId: 'mod-mkt-2',
+            title: '08. Estratégias Fundamentais',
+            description: 'Aula 8',
+            videoId: 'eD6jwyoofD0',
+            durationMinutes: 15,
+            order: 8,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-9',
+            moduleId: 'mod-mkt-2',
+            title: '09. Formatos e Canais de Mídia',
+            description: 'Aula 9',
+            videoId: 'sd-6PgCfWvA',
+            durationMinutes: 14,
+            order: 9,
+            isRequired: true
+          }
+        ]
+      },
+      {
+        id: 'mod-mkt-3',
+        courseId: 'course-marketing-digital',
+        title: 'Módulo 3: Métricas, Profissões e Primeiros Passos',
+        order: 3,
+        lessons: [
+          {
+            id: 'les-mkt-10',
+            moduleId: 'mod-mkt-3',
+            title: '10. Análise e Relatórios',
+            description: 'Aula 10',
+            videoId: 'GcHhRHKgwg8',
+            durationMinutes: 16,
+            order: 10,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-11',
+            moduleId: 'mod-mkt-3',
+            title: '11. Profissões Relacionadas',
+            description: 'Aula 11',
+            videoId: 'j4v-Ltk-Gy8',
+            durationMinutes: 14,
+            order: 11,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-12',
+            moduleId: 'mod-mkt-3',
+            title: '12. Por onde Começar?',
+            description: 'Aula 12',
+            videoId: 'rDxmzERZhes',
+            durationMinutes: 17,
+            order: 12,
+            isRequired: true
+          },
+          {
+            id: 'les-mkt-13',
+            moduleId: 'mod-mkt-3',
+            title: '13. Introdução e Visão Geral Prática',
+            description: 'Aula 13',
+            videoId: 'Us7U6StjyAo',
+            durationMinutes: 10,
+            order: 13,
+            isRequired: true
+          }
+        ]
+      }
+    ],
+    finalQuiz: [
+      {
+        id: 'q-mkt-1',
+        question: 'Qual é a principal função do marketing de conteúdo numa estratégia digital?',
+        options: [
+          'Apenas postar promoções de produtos sem valor educativo',
+          'Atrair, educar e construir relacionamento de confiança com o público-alvo',
+          'Enviar e-mails em massa sem permissão',
+          'Comprar seguidores nas redes sociais'
+        ],
+        correctAnswerIndex: 1,
+        explanation: 'O marketing de conteúdo foca em entregar valor real para solucionar problemas e educar a audiência, gerando autoridade e conversões sustentáveis.'
+      },
+      {
+        id: 'q-mkt-2',
+        question: 'O que diferencia o Marketing de Performance de outras estratégias?',
+        options: [
+          'Foco em resultados mensuráveis, cliques, conversões e retorno sobre o investimento (ROI)',
+          'Não necessita de planeamento nem medição de métricas',
+          'É exclusivo para canais impressos como revistas e panfletos',
+          'Garante vendas sem necessidade de produto de qualidade'
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'No marketing de performance, as ações são orientadas por dados concretos, otimização contínua e foco claro em métricas de conversão e ROI.'
+      },
+      {
+        id: 'q-mkt-3',
+        question: 'Por que a análise de relatórios e métricas é indispensável no marketing digital?',
+        options: [
+          'Para saber quais canais e conteúdos trazem resultados e onde otimizar os recursos',
+          'Apenas para acumular gráficos sem tomar decisões',
+          'Não tem utilidade depois da publicação',
+          'Substitui a necessidade de criar bons produtos'
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'A tomada de decisão orientada por dados permite ajustar campanhas, reduzir desperdício de tempo e aumentar os resultados práticos.'
+      },
+      {
+        id: 'q-mkt-4',
+        question: 'Qual é a grande vantagem do digital em comparação com o marketing tradicional?',
+        options: [
+          'Segmentação precisa do público, mensuração em tempo real e maior acessibilidade de custos',
+          'Falta de interação com os clientes',
+          'Impossibilidade de saber quantas pessoas viram o anúncio',
+          'Exclusividade apenas para grandes multinacionais'
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'O meio digital permite alcançar exatamente o público interessado e medir cada clique, visualização e compra com precisão instantânea.'
+      },
+      {
+        id: 'q-mkt-5',
+        question: 'Para quem está a começar no marketing digital hoje, qual é o primeiro passo mais recomendado?',
+        options: [
+          'Entender o público-alvo, dominar uma plataforma/canal principal e produzir conteúdo prático e consistente',
+          'Investir todo o orçamento em anúncios sem ter público definido',
+          'Copiar concorrentes sem adaptar à realidade local',
+          'Aguardar anos até ter uma agência inteira contratada'
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'Começar com clareza sobre quem queres ajudar, focar num canal estratégico e manter consistência na entrega de valor é o caminho mais seguro e eficaz.'
+      }
+    ]
+  },
+  {
+    id: 'course-english-beginner',
+    slug: 'ingles-pratico-do-zero',
+    title: 'Inglês Prático do Zero',
+    category: 'Idiomas',
+    level: 'Iniciante',
+    price: 0,
+    thumbnail: '/src/assets/images/course_english_learning_1792265740746.jpg',
+    durationEstimate: '5 horas de conteúdo prático',
+    shortDescription: 'Aprende inglês do zero com pronúncia correta, vocabulário essencial, diálogos do quotidiano e estruturas práticas.',
+    fullDescription: 'O curso Inglês Prático do Zero foi concebido para destravar o idioma mais falado no mundo global, nos negócios e na tecnologia de forma simples e descomplicada. Vais aprender desde o alfabeto, sons fundamentais e saudações, até como se apresentar com naturalidade, fazer perguntas essenciais (Who, What, Where, When, How), falar sobre a tua rotina de trabalho e comunicar em situações do dia a dia. Cada aula inclui explicações práticas e um Mini-Quiz com IA para consolidar o teu domínio.',
+    objectives: [
+      'Dominar a pronúncia correta dos sons essenciais do inglês e o alfabeto',
+      'Apresentar-se com segurança, dizer a profissão, país de origem e idade',
+      'Construir frases no presente com os pronomes e o verbo To Be',
+      'Utilizar vocabulário chave do dia a dia, trabalho, tecnologia e atendimento',
+      'Formular perguntas comuns usando Who, What, Where, When e How',
+      'Desenvolver audição ativa e confiança para conversações simples'
+    ],
+    requirements: [
+      'Nenhum conhecimento prévio de inglês',
+      'Caderno ou bloco de notas para anotar novas expressões',
+      'Disposição para falar em voz alta e repetir a pronúncia das aulas'
+    ],
+    targetAudience: 'Estudantes, profissionais, assistentes, empreendedores e qualquer pessoa que queira abrir portas no mercado de trabalho nacional e internacional aprendendo inglês.',
+    isPublished: true,
+    featured: true,
+    passingScorePercent: 80,
+    modules: [
+      {
+        id: 'mod-eng-1',
+        courseId: 'course-english-beginner',
+        title: 'Módulo 1: Fundamentos, Sons e Primeiras Palavras',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-eng-1',
+            moduleId: 'mod-eng-1',
+            title: '01. Comece a Falar Inglês do Zero: Alfabeto e Saudações',
+            description: 'Aprende as saudações mais usadas no dia a dia (Hello, Good Morning, Hi), o alfabeto e como pronunciar os primeiros sons com clareza.',
+            videoId: 'biaEAXoa0-M',
+            durationMinutes: 25,
+            order: 1,
+            isRequired: true,
+            resources: [
+              { title: 'Tabela de Fonética e Saudações em Inglês (PDF)', url: '#', type: 'guide' }
+            ]
+          },
+          {
+            id: 'les-eng-2',
+            moduleId: 'mod-eng-1',
+            title: '02. Apresentação Pessoal e Verbo To Be na Prática',
+            description: 'Aprende a dizer o teu nome, idade, país de origem, profissão e o uso prático e descomplicado do Verb To Be (I am, You are, He is, She is).',
+            videoId: 'yaxRsYu1yUA',
+            durationMinutes: 22,
+            order: 2,
+            isRequired: true
+          }
+        ]
+      },
+      {
+        id: 'mod-eng-2',
+        courseId: 'course-english-beginner',
+        title: 'Módulo 2: Vocabulário Essencial e Estruturas do Quotidiano',
+        order: 2,
+        lessons: [
+          {
+            id: 'les-eng-3',
+            moduleId: 'mod-eng-2',
+            title: '03. Números, Horas, Dias da Semana e Rotina Diária',
+            description: 'Como contar, marcar compromissos, falar as horas e descrever as atividades da tua rotina diária em inglês com naturalidade.',
+            videoId: 'DIuC1GJnElo',
+            durationMinutes: 24,
+            order: 1,
+            isRequired: true
+          },
+          {
+            id: 'les-eng-4',
+            moduleId: 'mod-eng-2',
+            title: '04. Como Fazer Perguntas em Inglês (Who, What, Where, When, Why, How)',
+            description: 'Domina as Question Words essenciais para pedir informações, pedir orientações e manter uma conversa fluida em qualquer ambiente.',
+            videoId: 'FJ0zBvKObG0',
+            durationMinutes: 26,
+            order: 2,
+            isRequired: true
+          }
+        ]
+      },
+      {
+        id: 'mod-eng-3',
+        courseId: 'course-english-beginner',
+        title: 'Módulo 3: Conversação e Situações Práticas',
+        order: 3,
+        lessons: [
+          {
+            id: 'les-eng-5',
+            moduleId: 'mod-eng-3',
+            title: '05. Inglês para o Trabalho, Viagens e Atendimento ao Público',
+            description: 'Expressões indispensáveis para reuniões, trocas de mensagens, e-mails, compras e aeroportos com dicas de pronúncia natural.',
+            videoId: 'uryccAhT-Zg',
+            durationMinutes: 28,
+            order: 1,
+            isRequired: true
+          }
+        ]
+      }
+    ],
+    finalQuiz: [
+      {
+        id: 'q-eng-1',
+        question: 'Qual é a forma correta do verbo To Be para a frase "She _____ a great teacher"?',
+        options: ['are', 'is', 'am', 'be'],
+        correctAnswerIndex: 1,
+        explanation: 'Para a terceira pessoa do singular (He, She, It), a conjugação correta do verbo To Be no presente é "is".'
+      },
+      {
+        id: 'q-eng-2',
+        question: 'Qual Question Word é utilizada quando queremos perguntar sobre a localização ou o lugar de algo?',
+        options: ['When', 'Where', 'Who', 'Why'],
+        correctAnswerIndex: 1,
+        explanation: '"Where" significa "Onde" e refere-se especificamente a lugares e localizações.'
+      },
+      {
+        id: 'q-eng-3',
+        question: 'Como se responde de forma natural e cortês à saudação "How are you doing today?"',
+        options: ['I am doing great, thank you!', 'I am 25 years old', 'Yes, I do', 'Good night'],
+        correctAnswerIndex: 0,
+        explanation: '"I am doing great, thank you!" é uma resposta educada e comum no dia a dia em língua inglesa.'
+      },
+      {
+        id: 'q-eng-4',
+        question: 'Qual é o plural correto do pronome "You" em inglês quando falamos com um grupo de pessoas?',
+        options: ['Yous', 'You', 'Yours', 'You alls'],
+        correctAnswerIndex: 1,
+        explanation: 'Na gramática inglesa padrão, "You" serve tanto para o singular (você/tu) quanto para o plural (vocês).'
+      },
+      {
+        id: 'q-eng-5',
+        question: 'Qual frase no Simple Present expressa corretamente uma rotina de trabalho?',
+        options: ['I works in an office', 'I work in an office', 'I working in an office', 'I am work in an office'],
+        correctAnswerIndex: 1,
+        explanation: 'Com o pronome "I", o verbo no presente simples permanece na forma básica sem o sufixo "s": "I work in an office".'
+      }
+    ]
+  },
+  {
+    id: 'course-spanish-beginner',
+    slug: 'espanhol-pratico-iniciantes',
+    title: 'Espanhol Prático para Iniciantes',
+    category: 'Idiomas',
+    level: 'Iniciante',
+    price: 0,
+    thumbnail: '/src/assets/images/course_spanish_learning_1792265753095.jpg',
+    durationEstimate: '5 horas de conteúdo prático',
+    shortDescription: 'Aprende espanhol desde o primeiro dia com pronúncia autêntica, saudações, falsos amigos e conversação prática.',
+    fullDescription: 'O curso Espanhol Prático para Iniciantes foi desenhado especialmente para falantes de português que desejam falar espanhol com segurança sem cair nas armadilhas do "portunhol". Vais aprender as nuances de pronúncia (sons do LL, Ñ, J, Z, RR), os cumprimentos formais e informais, a diferença crucial entre os verbos Ser e Estar, como evitar os falsos amigos (falsos cognatos) e construir frases corretas para viagens, negócios e amizades.',
+    objectives: [
+      'Identificar e pronunciar corretamente os sons exclusivos do espanhol (LL, Y, Ñ, RR, J)',
+      'Apresentar-se e cumprimentar pessoas formalmente e informalmente',
+      'Compreender a diferença prática e o uso correto dos verbos Ser e Estar',
+      'Evitar os erros mais comuns de "portunhol" e reconhecer falsos cognatos',
+      'Pedir informações em hotéis, restaurantes, táxis e aeroportos',
+      'Construir um vocabulário sólido para conversações diárias'
+    ],
+    requirements: [
+      'Nenhum conhecimento prévio de espanhol',
+      'Vontade de praticar a pronúncia em voz alta',
+      'Caderno de vocabulário para anotar expressões'
+    ],
+    targetAudience: 'Estudantes, profissionais em comércio exterior, turismo e hospitalidade, e quem deseja viajar ou comunicar-se em espanhol com segurança.',
+    isPublished: true,
+    featured: true,
+    passingScorePercent: 80,
+    modules: [
+      {
+        id: 'mod-esp-1',
+        courseId: 'course-spanish-beginner',
+        title: 'Módulo 1: Primeiros Passos e Sons Autênticos',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-esp-1',
+            moduleId: 'mod-esp-1',
+            title: '01. Saludos y Despedidas: Saudações e Cumprimentos',
+            description: 'Aprende como cumprimentar alguém de manhã, tarde e noite em espanhol (¡Hola!, Buenos días, Buenas tardes), despedidas e fórmulas de cortesia.',
+            videoId: '-hwmabZ-aFc',
+            durationMinutes: 20,
+            order: 1,
+            isRequired: true,
+            resources: [
+              { title: 'Guia de Saludos y Cortesía en Español (PDF)', url: '#', type: 'guide' }
+            ]
+          },
+          {
+            id: 'les-esp-2',
+            moduleId: 'mod-esp-1',
+            title: '02. El Alfabeto y la Pronunciación Correcta (LL, Ñ, RR, J)',
+            description: 'Descobre os segredos fonéticos do espanhol: como pronunciar o J com som de R forte, o Ñ, o duplo L e o R vibrante sem cometer gafes.',
+            videoId: 'FLL07JrVlGQ',
+            durationMinutes: 22,
+            order: 2,
+            isRequired: true
+          }
+        ]
+      },
+      {
+        id: 'mod-esp-2',
+        courseId: 'course-spanish-beginner',
+        title: 'Módulo 2: Gramática Prática e Construção de Frases',
+        order: 2,
+        lessons: [
+          {
+            id: 'les-esp-3',
+            moduleId: 'mod-esp-2',
+            title: '03. Los Verbos Ser y Estar: Diferenças e Aplicação',
+            description: 'Domina a distinção essencial entre o que é permanente ou essência (Ser) e o que é temporário, estado emocional ou localização (Estar).',
+            videoId: '7lOQn9AG8DM',
+            durationMinutes: 24,
+            order: 1,
+            isRequired: true
+          },
+          {
+            id: 'les-esp-4',
+            moduleId: 'mod-esp-2',
+            title: '04. Artículos, Género y Plurales en Español',
+            description: 'Entende o uso de El, La, Los, Las, o famoso artigo neutro "Lo" e as palavras que mudam de gênero do português para o espanhol.',
+            videoId: '6qfJnC92FKA',
+            durationMinutes: 23,
+            order: 2,
+            isRequired: true
+          }
+        ]
+      },
+      {
+        id: 'mod-esp-3',
+        courseId: 'course-spanish-beginner',
+        title: 'Módulo 3: Conversação e Vida Real',
+        order: 3,
+        lessons: [
+          {
+            id: 'les-esp-5',
+            moduleId: 'mod-esp-3',
+            title: '05. Falsos Amigos (Heterosemánticos) e Diálogos de Viagem',
+            description: 'Conhece as palavras que parecem português mas têm significado completamente diferente (embarazada, exquisito, propina) e frases úteis para viagens.',
+            videoId: 'BIao_Q8oMf4',
+            durationMinutes: 27,
+            order: 1,
+            isRequired: true
+          }
+        ]
+      }
+    ],
+    finalQuiz: [
+      {
+        id: 'q-esp-1',
+        question: 'Quando devemos usar o verbo "SER" em espanhol?',
+        options: [
+          'Para indicar nacionalidade, identidade e profissão permanente',
+          'Apenas para dizer a localização de um objeto no momento',
+          'Para falar de um estado passageiro de cansaço',
+          'Nunca se usa o verbo ser em espanhol'
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'O verbo "SER" define características essenciais, permanentes ou inerentes: "Soy moçambicano, soy estudiante".'
+      },
+      {
+        id: 'q-esp-2',
+        question: 'O que significa a palavra "embarazada" em espanhol?',
+        options: ['Envergonhada', 'Grávida', 'Preocupada', 'Assustada'],
+        correctAnswerIndex: 1,
+        explanation: '"Embarazada" é um falso amigo clássico: significa grávida. Envergonhada diz-se "avergonzada".'
+      },
+      {
+        id: 'q-esp-3',
+        question: 'Como soa a letra "J" (jota) na pronúncia correta em espanhol?',
+        options: [
+          'Como o "J" suave da língua portuguesa',
+          'Como um som aspirado forte semelhante ao "R" da garganta',
+          'Com o som de "Z"',
+          'É uma letra sempre silenciosa'
+        ],
+        correctAnswerIndex: 1,
+        explanation: 'A letra "J" (como em "jamón" ou "jardín") tem som gutural aspirado, similar ao R forte em português.'
+      },
+      {
+        id: 'q-esp-4',
+        question: 'Quando alguém elogia uma refeição dizendo que está "exquisita", o que significa?',
+        options: ['Que a comida tem gosto estranho', 'Que a comida está deliciosa e excelente', 'Que está muito fria', 'Que está sem tempero'],
+        correctAnswerIndex: 1,
+        explanation: 'Em espanhol, "exquisito/a" significa requintado, saboroso e delicioso!'
+      },
+      {
+        id: 'q-esp-5',
+        question: 'Qual é o artigo definido singular correto para a palavra masculina "cuaderno"?',
+        options: ['Lo', 'Le', 'El', 'Un'],
+        correctAnswerIndex: 2,
+        explanation: 'Em espanhol, "El" é o artigo definido masculino singular correspondente a "O" em português ("El cuaderno").'
+      }
+    ]
   }
 ];
 
-export const INITIAL_USERS = [
-  {
-    id: 'user-student-demo',
-    name: 'Edgar Iniesta',
-    displayName: 'Edgar',
-    email: 'iniestaedgar20@gmail.com',
-    password: 'password123',
-    role: 'student' as const,
-    location: 'Maputo, Moçambique',
-    phone: '+258 84 123 4567',
-    bio: 'Estudante entusiasta de tecnologia e ferramentas digitais em Moçambique.',
-    joinedAt: '2026-03-01'
-  },
-  {
-    id: 'user-admin-demo',
-    name: 'Administrador Saber+',
-    displayName: 'Admin Saber+',
-    email: 'admin@saberplus.mz',
-    password: 'admin123',
-    role: 'admin' as const,
-    location: 'Maputo, Moçambique',
-    phone: '+258 82 999 8888',
-    bio: 'Gestão pedagógica e coordenação de cursos Saber+ Academy.',
-    joinedAt: '2026-01-15'
-  }
-];
+export const INITIAL_USERS: any[] = [];
+

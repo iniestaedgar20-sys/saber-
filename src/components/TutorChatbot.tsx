@@ -90,6 +90,14 @@ Podes perguntar livremente ou clicar numa das sugestões rápidas abaixo!`,
 
   // Preset question suggestions based on course context
   const getSuggestions = () => {
+    if (activeCourse?.id === 'course-marketing-digital' || activeCourse?.id?.includes('marketing')) {
+      return [
+        'O que é um funil de vendas no digital?',
+        'Qual a diferença entre tráfego pago e orgânico?',
+        'Como fazer um planeamento de conteúdo eficiente?',
+        'Quais as métricas mais importantes (CTR, ROI)?'
+      ];
+    }
     if (activeCourse?.id === 'course-excel-zero') {
       return [
         'Como funciona a função PROCV com exemplo?',

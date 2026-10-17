@@ -343,7 +343,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               "Sempre tive dificuldades com fórmulas no Excel. Com a organização em módulos curtos da Saber+, finalmente consegui automatizar os relatórios de caixa da papelaria onde trabalho em Maputo."
             </p>
             <div className="pt-3 border-t border-[#344448]">
-              <div className="text-xs font-bold text-[#D6F36A]">Edgar Iniesta</div>
+              <div className="text-xs font-bold text-[#D6F36A]">Lucas Sitoe</div>
               <div className="text-[11px] text-[#A4B2AF]">Aluno do curso Excel do Zero · Maputo</div>
             </div>
           </div>

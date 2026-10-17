@@ -11,15 +11,14 @@ import {
   Sparkles, 
   User as UserIcon, 
   UserPlus,
-  PlayCircle,
-  Layers,
   ArrowRight,
   ShieldCheck,
-  Check
+  Check,
+  BookOpen
 } from 'lucide-react';
 
 interface AuthPageProps {
-  mode: 'get-started' | 'login' | 'register' | 'forgot-password';
+  mode: 'login' | 'register' | 'forgot-password' | 'get-started';
   onNavigate: (view: string) => void;
 }
 
@@ -47,9 +46,14 @@ const GoogleIcon = () => (
 export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNavigate }) => {
   const { login, loginWithGoogle, register, resetPassword } = useApp();
 
-  const [activeTab, setActiveTab] = useState<'get-started' | 'login' | 'register' | 'forgot-password'>(initialMode);
+  const [activeTab, setActiveTab] = useState<'login' | 'register' | 'forgot-password'>(() => {
+    if (initialMode === 'register') return 'register';
+    if (initialMode === 'forgot-password') return 'forgot-password';
+    return 'login';
+  });
   const [showGoogleModal, setShowGoogleModal] = useState(false);
   const [customGoogleEmail, setCustomGoogleEmail] = useState('');
+  const [customGoogleName, setCustomGoogleName] = useState('');
 
   // Login / Register fields
   const [email, setEmail] = useState('');
@@ -129,15 +133,18 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
 
   // Google Sign-in Handler
   const handleGoogleSignIn = (selectedEmail?: string, selectedName?: string) => {
+    const emailToUse = selectedEmail || customGoogleEmail;
+    if (!emailToUse || !emailToUse.trim()) {
+      setErrorMsg('Por favor introduz o teu e-mail do Google.');
+      return;
+    }
     setShowGoogleModal(false);
-    loginWithGoogle(selectedEmail || 'iniestaedgar20@gmail.com', selectedName || 'Edgar Iniesta');
-    onNavigate('dashboard');
-  };
-
-  // Demo Student Login
-  const handleDemoStudentLogin = () => {
-    login('iniestaedgar20@gmail.com', 'password123');
-    onNavigate('dashboard');
+    const res = loginWithGoogle(emailToUse.trim(), selectedName || customGoogleName);
+    if (res.success) {
+      onNavigate('dashboard');
+    } else {
+      setErrorMsg(res.error || 'Erro ao entrar com o Google.');
+    }
   };
 
   return (
@@ -162,18 +169,7 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
           
           {/* Dashboard Tab Selector */}
           {activeTab !== 'forgot-password' && (
-            <div className="grid grid-cols-3 border-b border-[#344448] bg-[#141B1D]">
-              <button
-                type="button"
-                onClick={() => { setActiveTab('get-started'); setErrorMsg(''); }}
-                className={`py-3 text-xs font-bold transition-colors ${
-                  activeTab === 'get-started'
-                    ? 'text-[#D6F36A] border-b-2 border-[#D6F36A] bg-[#192326]'
-                    : 'text-[#A4B2AF] hover:text-[#F3F5F0]'
-                }`}
-              >
-                Começar
-              </button>
+            <div className="grid grid-cols-2 border-b border-[#344448] bg-[#141B1D]">
               <button
                 type="button"
                 onClick={() => { setActiveTab('login'); setErrorMsg(''); }}
@@ -210,77 +206,6 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
             {successMsg && (
               <div className="p-3 rounded-xl bg-[#75C9B7]/15 border border-[#75C9B7]/30 text-xs text-[#75C9B7]">
                 {successMsg}
-              </div>
-            )}
-
-            {/* TAB 1: GET STARTED */}
-            {activeTab === 'get-started' && (
-              <div className="space-y-5">
-                <div className="text-center space-y-1">
-                  <h2 className="text-lg font-bold text-[#F3F5F0]">
-                    Inicia a tua aprendizagem prática
-                  </h2>
-                  <p className="text-xs text-[#A4B2AF]">
-                    Formação objectiva em abas completas, sem desvios nem slideshows longos.
-                  </p>
-                </div>
-
-                {/* Key Benefits Pills */}
-                <div className="space-y-2.5">
-                  <div className="p-3 rounded-xl bg-[#202D30] border border-[#344448] flex items-center gap-3">
-                    <PlayCircle className="w-5 h-5 text-[#D6F36A] shrink-0" />
-                    <div className="text-xs">
-                      <strong className="text-[#F3F5F0] block">Aulas 100% em Vídeo Prático</strong>
-                      <span className="text-[#A4B2AF]">Aprende passo a passo com aulas organizadas por número.</span>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-[#202D30] border border-[#344448] flex items-center gap-3">
-                    <Layers className="w-5 h-5 text-[#75C9B7] shrink-0" />
-                    <div className="text-xs">
-                      <strong className="text-[#F3F5F0] block">Dashboard em Abas Directas</strong>
-                      <span className="text-[#A4B2AF]">Sem rolagens infinitas; navega directo para o que queres.</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Google Sign In Call to Action */}
-                <button
-                  type="button"
-                  onClick={() => setShowGoogleModal(true)}
-                  className="w-full py-3 px-4 rounded-xl bg-[#F3F5F0] hover:bg-white text-[#111719] font-bold text-xs flex items-center justify-center gap-2.5 transition-colors shadow-lg"
-                >
-                  <GoogleIcon />
-                  <span>Continuar com o Google</span>
-                </button>
-
-                <div className="grid grid-cols-2 gap-2.5 pt-1">
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('register')}
-                    className="w-full py-2.5 bg-[#D6F36A] hover:bg-[#c2e256] text-[#111719] font-bold text-xs rounded-xl transition-colors text-center"
-                  >
-                    Criar Conta
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('login')}
-                    className="w-full py-2.5 bg-[#202D30] hover:bg-[#202D30]/80 text-[#F3F5F0] border border-[#344448] font-semibold text-xs rounded-xl transition-colors text-center"
-                  >
-                    Já tenho conta
-                  </button>
-                </div>
-
-                {/* Quick Student Access */}
-                <div className="pt-2 border-t border-[#344448] text-center">
-                  <button
-                    type="button"
-                    onClick={handleDemoStudentLogin}
-                    className="text-[11px] text-[#A4B2AF] hover:text-[#D6F36A] transition-colors"
-                  >
-                    Acesso rápido de teste: <span className="underline font-semibold text-[#D6F36A]">Entrar como Aluno Demo</span>
-                  </button>
-                </div>
               </div>
             )}
 
@@ -362,15 +287,7 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
                   <span>Entrar no Painel</span>
                 </button>
 
-                {/* Quick Student Access */}
-                <div className="pt-3 border-t border-[#344448] space-y-2 text-center">
-                  <button
-                    type="button"
-                    onClick={handleDemoStudentLogin}
-                    className="w-full py-2 bg-[#202D30] hover:bg-[#202D30]/80 text-[#D6F36A] border border-[#344448] rounded-lg text-xs font-semibold"
-                  >
-                    Entrar com Conta de Demonstração
-                  </button>
+                <div className="pt-3 border-t border-[#344448] text-center">
                   <div className="text-xs text-[#A4B2AF]">
                     Não tens uma conta?{' '}
                     <button
@@ -414,7 +331,7 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
                     <input
                       type="text"
                       required
-                      placeholder="Ex: Edgar Iniesta"
+                      placeholder="Ex: Teu Nome Completo"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full pl-10 pr-4 py-2 bg-[#111719] border border-[#344448] rounded-xl text-xs text-[#F3F5F0] placeholder:text-[#A4B2AF]/50 focus:outline-none focus:border-[#D6F36A]"
@@ -561,6 +478,18 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
           </div>
         </div>
 
+        {/* Option to Explore Courses Without Logging In */}
+        <div className="text-center pt-2">
+          <button
+            type="button"
+            onClick={() => onNavigate('courses')}
+            className="text-xs text-[#75C9B7] hover:text-[#D6F36A] transition-colors inline-flex items-center gap-2 py-2 px-4 rounded-xl bg-[#192326]/60 border border-[#344448] hover:border-[#D6F36A]/50"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Ver Catálogo de Cursos (7 Cursos Práticos)</span>
+          </button>
+        </div>
+
       </div>
 
       {/* Google Account Picker Modal */}
@@ -577,56 +506,65 @@ export const AuthPages: React.FC<AuthPageProps> = ({ mode: initialMode, onNaviga
               </div>
             </div>
 
-            <div className="space-y-2 pt-2 border-t border-[#344448]">
-              {/* Primary Detected Google Account */}
-              <button
-                type="button"
-                onClick={() => handleGoogleSignIn('iniestaedgar20@gmail.com', 'Edgar Iniesta')}
-                className="w-full p-3 rounded-xl bg-[#202D30] hover:bg-[#202D30]/80 border border-[#344448] flex items-center gap-3 text-left transition-colors"
-              >
-                <div className="w-9 h-9 rounded-full bg-[#D6F36A] text-[#111719] font-bold flex items-center justify-center shrink-0 text-sm">
-                  E
-                </div>
-                <div className="overflow-hidden">
-                  <div className="text-xs font-bold text-[#F3F5F0]">Edgar Iniesta</div>
-                  <div className="text-[11px] text-[#A4B2AF] truncate">iniestaedgar20@gmail.com</div>
-                </div>
-              </button>
-
-              {/* Custom Google account input toggle */}
-              <div className="pt-2">
-                <div className="flex gap-2">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (customGoogleEmail.trim()) {
+                  handleGoogleSignIn(customGoogleEmail.trim(), customGoogleName.trim());
+                }
+              }}
+              className="space-y-3 pt-2 border-t border-[#344448]"
+            >
+              <div>
+                <label className="block text-xs font-semibold text-[#A4B2AF] mb-1">
+                  O teu Endereço Google / Gmail
+                </label>
+                <div className="relative">
+                  <Mail className="w-4 h-4 text-[#A4B2AF] absolute left-3 top-2.5" />
                   <input
                     type="email"
-                    placeholder="Outro e-mail @gmail.com"
+                    required
+                    placeholder="o.teu.email@gmail.com"
                     value={customGoogleEmail}
                     onChange={(e) => setCustomGoogleEmail(e.target.value)}
-                    className="flex-1 px-3 py-2 bg-[#111719] border border-[#344448] rounded-lg text-xs text-[#F3F5F0] placeholder:text-[#A4B2AF]/50 focus:outline-none focus:border-[#D6F36A]"
+                    className="w-full pl-9 pr-3 py-2 bg-[#111719] border border-[#344448] rounded-xl text-xs text-[#F3F5F0] placeholder:text-[#A4B2AF]/50 focus:outline-none focus:border-[#D6F36A]"
                   />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (customGoogleEmail.trim()) {
-                        handleGoogleSignIn(customGoogleEmail.trim());
-                      }
-                    }}
-                    className="px-3 py-2 bg-[#D6F36A] text-[#111719] font-bold text-xs rounded-lg hover:bg-[#c2e256]"
-                  >
-                    Continuar
-                  </button>
                 </div>
               </div>
-            </div>
 
-            <div className="pt-2 flex justify-end">
-              <button
-                type="button"
-                onClick={() => setShowGoogleModal(false)}
-                className="px-3 py-1.5 text-xs text-[#A4B2AF] hover:text-[#F3F5F0]"
-              >
-                Cancelar
-              </button>
-            </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#A4B2AF] mb-1">
+                  O teu Nome (opcional)
+                </label>
+                <div className="relative">
+                  <UserIcon className="w-4 h-4 text-[#A4B2AF] absolute left-3 top-2.5" />
+                  <input
+                    type="text"
+                    placeholder="Teu Nome"
+                    value={customGoogleName}
+                    onChange={(e) => setCustomGoogleName(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 bg-[#111719] border border-[#344448] rounded-xl text-xs text-[#F3F5F0] placeholder:text-[#A4B2AF]/50 focus:outline-none focus:border-[#D6F36A]"
+                  />
+                </div>
+              </div>
+
+              <div className="pt-2 flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowGoogleModal(false)}
+                  className="px-3 py-2 text-xs text-[#A4B2AF] hover:text-[#F3F5F0]"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={!customGoogleEmail.trim()}
+                  className="px-4 py-2 bg-[#D6F36A] hover:bg-[#c2e256] text-[#111719] font-bold text-xs rounded-xl transition-colors shadow disabled:opacity-50"
+                >
+                  Continuar com Google
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

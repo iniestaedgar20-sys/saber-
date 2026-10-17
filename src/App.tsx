@@ -28,11 +28,71 @@ function MainApp() {
     setCurrentView(view);
   };
 
-  // If user explicitly logged out, render AuthPages
+  // If user is not authenticated: Allow exploring courses or show clean AuthPages
   if (!currentUser) {
+    if (currentView === 'courses' || currentView === 'course-detail') {
+      return (
+        <div className="min-h-screen flex flex-col bg-[#111719] text-[#F3F5F0]">
+          {/* Guest Clean Header */}
+          <header className="sticky top-0 z-40 bg-[#111719] border-b border-[#344448]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+              <button 
+                onClick={() => handleNavigate('courses')}
+                className="flex items-center gap-2.5 text-left group"
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#192326] border border-[#344448] flex items-center justify-center text-[#D6F36A] font-black text-lg group-hover:border-[#D6F36A] transition-colors shadow">
+                  S+
+                </div>
+                <div className="text-base font-black tracking-tight text-[#F3F5F0]">
+                  Saber<span className="text-[#D6F36A]">+</span>
+                </div>
+              </button>
+
+              <div className="flex items-center gap-2.5">
+                <button
+                  onClick={() => handleNavigate('login')}
+                  className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-[#A4B2AF] hover:text-[#F3F5F0] hover:bg-[#192326] transition-colors"
+                >
+                  Entrar
+                </button>
+                <button
+                  onClick={() => handleNavigate('register')}
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#D6F36A] hover:bg-[#c2e256] text-[#111719] transition-all shadow"
+                >
+                  Criar Conta
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <main className="flex-1 pb-10">
+            {currentView === 'courses' && (
+              <CoursesCatalogPage onNavigate={handleNavigate} />
+            )}
+            {currentView === 'course-detail' && (
+              <CourseDetailPage 
+                courseId={selectedCourseId} 
+                onNavigate={handleNavigate} 
+              />
+            )}
+          </main>
+
+          <TutorChatbot 
+            activeCourseId={selectedCourseId} 
+            onNavigate={handleNavigate} 
+          />
+        </div>
+      );
+    }
+
+    const authMode = currentView === 'login' ? 'login' : 'register';
     return (
       <div className="min-h-screen bg-[#111719] text-[#F3F5F0]">
-        <AuthPages mode="login" onNavigate={handleNavigate} />
+        <AuthPages mode={authMode} onNavigate={handleNavigate} />
+        <TutorChatbot 
+          activeCourseId={selectedCourseId} 
+          onNavigate={handleNavigate} 
+        />
       </div>
     );
   }
